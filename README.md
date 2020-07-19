@@ -1,7 +1,9 @@
 Simple application to read current clocks of ATi Radeon cards (xf86-video-ati, xf86-video-amdgpu).
 
-# xf86-video-ati and xf86-video-amdgpu  driver
-Install and run radeon-profile-daemon (https://github.com/marazmista/radeon-profile-daemon) for using this app as normal user. Otherwise app need to be run with root privilages for changing power profiles (and clocks readings sometimes). You can add `username ALL = NOPASSWD: /usr/bin/radeon-profile` to your `/etc/sudoers`. Here is tip for run app as normal user but involves change permissions to system files: http://bit.ly/1dvQMhS
+# xf86-video-ati and xf86-video-amdgpu driver
+Install and run radeon-profile-daemon (https://github.com/marazmista/radeon-profile-daemon) for using this app as normal user. Otherwise, the app needs to be run with root privileges to change the power profiles (sometimes clocks readings too). You can create a text file containing `username ALL = NOPASSWD: /usr/bin/radeon-profile` under `/etc/sudoers.d/radeon-profile`.
+
+Here is a tip to run the app as a normal user, **but note that this involves changing permissions to system files**: http://bit.ly/1dvQMhS
 
 # Functionality
 
@@ -27,19 +29,19 @@ For full functionality:
 
 
 # Build
-
 ```
-git clone https://github.com/marazmista/radeon-profile.git
-cd radeon-profile/radeon-profile
-qmake
-make 
+git clone https://github.com/marazmista/radeon-profile.git && cd radeon-profile/radeon-profile
+qmake && make 
+```
+To install to root for all users to be able to run radeon-profile:
+```
+sudo make install
 ```
 
 For Ubuntu 17.04, qt5-charts isn't available:
 * Use `qtchooser -l` to list available profiles
-* Use `qmake -qt=[profile from qtchooser]` to specify Qt root or download and install a Qt bundle from https://www.qt.io/download-open-source/#section-2
+* Use `qmake -qt=[profile from qtchooser]` to specify Qt root, or download and install Qt 5.9.1 from https://download.qt.io/archive/qt/5.9/5.9.1/
 * Make a `qt5opt.conf` in `/usr/lib/x86_64-linux-gnu/qtchooser/` containing:
-
 ```
 /opt/Qt5.9.1/5.9.1/gcc_64/bin
 /opt/Qt5.9.1/5.9.1
@@ -64,11 +66,12 @@ sudo add-apt-repository ppa:radeon-profile/stable
 sudo apt update
 sudo apt install radeon-profile
 ```
+
 ### Arch Linux
 * AUR package: https://aur.archlinux.org/packages/radeon-profile-git/
 * System daemon AUR package: https://aur.archlinux.org/packages/radeon-profile-daemon-git/
-# Links
 
+# Links
 * System daemon: https://github.com/marazmista/radeon-profile-daemon
 * Sort of official thread: http://phoronix.com/forums/showthread.php?83602-radeon-profile-tool-for-changing-profiles-and-monitoring-some-GPU-parameters
 * Icon: http://proicons.deviantart.com/art/Graphics-Cards-Icons-H1-Pack-161178339
