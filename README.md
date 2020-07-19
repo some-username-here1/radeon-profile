@@ -33,7 +33,7 @@ For full functionality:
 git clone https://github.com/marazmista/radeon-profile.git && cd radeon-profile/radeon-profile
 qmake && make 
 ```
-To install to root for all users to be able to run radeon-profile:
+To install for all users, run this instead of `make`:
 ```
 sudo make install
 ```
